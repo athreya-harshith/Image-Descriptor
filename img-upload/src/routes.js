@@ -9,6 +9,7 @@ Router.get("", (req, res) => {
     message: "API is live",
   });
 });
+Router.get("/images", express.static("./public"));
 Router.post("/", upload.single("image"), controller);
 
 module.exports = Router;

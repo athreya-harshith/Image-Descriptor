@@ -9,6 +9,8 @@ app.use(express.urlencoded({ extended: true }));
 app.get("/info", (req, res) => {
   res.json({ message: "API is on in index.js" });
 });
+app.use(express.static("uploads"));
+// app.use(express.static(".public"));
 app.use("/api", apiRoutes);
 app.listen(ServerConfig.PORT, () => {
   console.log(`Server is up and running on PORT ${ServerConfig.PORT}`);
