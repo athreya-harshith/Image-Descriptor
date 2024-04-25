@@ -12,3 +12,10 @@ datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
+
+model Captions {
+  id          Int     @id @default(autoincrement())
+  imageName   String
+  caption     String
+  description String?
+}

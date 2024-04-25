@@ -1,0 +1,1 @@
+export { default as CaptionService } from './caption-service'
