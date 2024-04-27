@@ -3,7 +3,7 @@ class SuccessResponse {
     statusCode?: number
     data: Object[] | Object
 
-    constructor(data: Object[] | Object, message: string = 'Successfully completed the request', statusCode?: number) {
+    constructor(data: Object[] | object, message: string = 'Successfully completed the request', statusCode?: number) {
         this.message = message,
             this.statusCode = statusCode
         this.data = data

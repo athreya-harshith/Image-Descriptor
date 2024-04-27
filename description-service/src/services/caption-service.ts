@@ -3,8 +3,6 @@ import { createReadStream } from 'fs'
 import axios from 'axios'
 import CaptionRepository from "../repositories/caption-repository";
 import { CreateCaption } from "../models/captions";
-import { sendData } from "../config/message-queue-config";
-import { Captions } from "@prisma/client";
 class CaptionService {
     constructor(private captionRepository: CaptionRepository) {
     }
@@ -30,16 +28,12 @@ class CaptionService {
             caption: response.message
         }
         const createdCaption = await this.captionRepository.create(createCaption);
-        sendData(createdCaption);
         console.log(createCaption);
-        return createdCaption;
+        return response
     }
-
-    async getCaptionById(id: number): Promise<Captions> {
+    async getCaptionById(id: number) {
         try {
             const response = await this.captionRepository.get(id);
-            if (!response)
-                throw new Error('Caption with given id not found');
             return response;
         } catch (error) {
             throw error;
